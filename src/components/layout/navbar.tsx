@@ -7,9 +7,8 @@
 // ============================================================
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useMemo, useRef, useEffect, useCallback } from "react";
+import { useState } from "react";
 import {
   Search,
   ShoppingCart,
@@ -27,8 +26,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useCartStore } from "@/store/cart-store";
 import { useAuthStore } from "@/store/auth-store";
 import ThemeToggle from "@/components/shared/theme-toggle";
-import { products } from "@/data/mock-data";
-import { formatPrice } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -43,74 +40,6 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const searchRef = useRef<HTMLDivElement>(null);
-  const mobileSearchRef = useRef<HTMLDivElement>(null);
-
-  // Filter products based on search query (max 6 results)
-  const suggestions = useMemo(() => {
-    if (!searchQuery.trim() || searchQuery.trim().length < 2) return [];
-    const q = searchQuery.toLowerCase();
-    return products
-      .filter((p) => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.subCategory.toLowerCase().includes(q))
-      .slice(0, 6);
-  }, [searchQuery]);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(e.target as Node) &&
-          mobileSearchRef.current && !mobileSearchRef.current.contains(e.target as Node)) {
-        setShowSuggestions(false);
-        setActiveIndex(-1);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleSearchChange = useCallback((value: string) => {
-    setSearchQuery(value);
-    setShowSuggestions(value.trim().length >= 2);
-    setActiveIndex(-1);
-  }, []);
-
-  const handleSelectProduct = useCallback((slug: string, id: string) => {
-    setShowSuggestions(false);
-    setSearchQuery("");
-    setActiveIndex(-1);
-    setSearchOpen(false);
-    router.push(`/list-product/${id}`);
-  }, [router]);
-
-  const handleSearchSubmit = useCallback((e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      setShowSuggestions(false);
-      setActiveIndex(-1);
-      setSearchOpen(false);
-      router.push(`/list-product?search=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  }, [searchQuery, router]);
-
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (!showSuggestions || suggestions.length === 0) return;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setActiveIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : 0));
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setActiveIndex((prev) => (prev > 0 ? prev - 1 : suggestions.length - 1));
-    } else if (e.key === "Enter" && activeIndex >= 0) {
-      e.preventDefault();
-      const selected = suggestions[activeIndex];
-      handleSelectProduct(selected.slug, selected.id);
-    } else if (e.key === "Escape") {
-      setShowSuggestions(false);
-      setActiveIndex(-1);
-    }
-  }, [showSuggestions, suggestions, activeIndex, handleSelectProduct]);
   const totalItems = useCartStore((s) => s.totalItems());
   const { user, isAuthenticated, logout } = useAuthStore();
 
@@ -179,52 +108,24 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Search Bar (Desktop) with Autocomplete */}
+            {/* Search Bar (Desktop) */}
             <form
               className="hidden md:flex flex-1 max-w-md mx-6"
-              onSubmit={handleSearchSubmit}
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (searchQuery.trim()) {
+                  router.push(`/list-product?search=${encodeURIComponent(searchQuery.trim())}`);
+                }
+              }}
             >
-              <div className="relative w-full" ref={searchRef}>
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" />
+              <div className="relative w-full">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search products..."
                   value={searchQuery}
-                  onChange={(e) => handleSearchChange(e.target.value)}
-                  onFocus={() => searchQuery.trim().length >= 2 && setShowSuggestions(true)}
-                  onKeyDown={handleKeyDown}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-9 bg-muted/50 border-border/50 focus:border-gold/50 focus:ring-gold/20"
                 />
-                {/* Autocomplete Dropdown */}
-                {showSuggestions && suggestions.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-background border border-border/50 rounded-lg shadow-xl z-50 overflow-hidden backdrop-blur-xl">
-                    {suggestions.map((product, index) => (
-                      <button
-                        key={product.id}
-                        type="button"
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 text-left transition-colors hover:bg-gold/10 ${
-                          index === activeIndex ? "bg-gold/10" : ""
-                        }`}
-                        onClick={() => handleSelectProduct(product.slug, product.id)}
-                        onMouseEnter={() => setActiveIndex(index)}
-                      >
-                        <div className="relative h-10 w-10 rounded-md overflow-hidden flex-shrink-0 border border-border/30">
-                          <Image src={product.imageUrl} alt={product.name} fill className="object-cover" sizes="40px" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium truncate">{product.name}</p>
-                          <p className="text-xs text-muted-foreground">{product.category}</p>
-                        </div>
-                        <span className="text-sm font-semibold text-gold flex-shrink-0">{formatPrice(product.price)}</span>
-                      </button>
-                    ))}
-                    <button
-                      type="submit"
-                      className="w-full px-3 py-2 text-xs text-center text-gold hover:bg-gold/5 border-t border-border/30 transition-colors"
-                    >
-                      View all results for &quot;{searchQuery}&quot; →
-                    </button>
-                  </div>
-                )}
               </div>
             </form>
 
@@ -384,52 +285,27 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Search (Expandable) with Autocomplete */}
+          {/* Mobile Search (Expandable) */}
           {searchOpen && (
             <form
               className="md:hidden pb-3 animate-in slide-in-from-top-2"
-              onSubmit={handleSearchSubmit}
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (searchQuery.trim()) {
+                  router.push(`/list-product?search=${encodeURIComponent(searchQuery.trim())}`);
+                  setSearchOpen(false);
+                }
+              }}
             >
-              <div className="relative" ref={mobileSearchRef}>
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" />
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search products..."
                   value={searchQuery}
-                  onChange={(e) => handleSearchChange(e.target.value)}
-                  onFocus={() => searchQuery.trim().length >= 2 && setShowSuggestions(true)}
-                  onKeyDown={handleKeyDown}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-9 bg-muted/50 border-border/50"
                   autoFocus
                 />
-                {/* Mobile Autocomplete Dropdown */}
-                {showSuggestions && suggestions.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-background border border-border/50 rounded-lg shadow-xl z-50 overflow-hidden">
-                    {suggestions.map((product, index) => (
-                      <button
-                        key={product.id}
-                        type="button"
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 text-left transition-colors hover:bg-gold/10 ${
-                          index === activeIndex ? "bg-gold/10" : ""
-                        }`}
-                        onClick={() => handleSelectProduct(product.slug, product.id)}
-                      >
-                        <div className="relative h-10 w-10 rounded-md overflow-hidden flex-shrink-0 border border-border/30">
-                          <Image src={product.imageUrl} alt={product.name} fill className="object-cover" sizes="40px" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium truncate">{product.name}</p>
-                          <p className="text-xs text-muted-foreground">{formatPrice(product.price)}</p>
-                        </div>
-                      </button>
-                    ))}
-                    <button
-                      type="submit"
-                      className="w-full px-3 py-2 text-xs text-center text-gold hover:bg-gold/5 border-t border-border/30"
-                    >
-                      View all results →
-                    </button>
-                  </div>
-                )}
               </div>
             </form>
           )}
