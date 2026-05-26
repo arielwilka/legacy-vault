@@ -22,7 +22,8 @@ const allTags = ["PSA", "BGS", "CGC", "TAG"];
 function ProductListContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "";
-  const [search, setSearch] = useState("");
+  const initialSearch = searchParams.get("search") || "";
+  const [search, setSearch] = useState(initialSearch);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCategory ? [initialCategory] : []);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 300000]);

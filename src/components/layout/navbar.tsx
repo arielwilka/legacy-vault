@@ -7,7 +7,7 @@
 // ============================================================
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import {
   Search,
@@ -36,7 +36,9 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const totalItems = useCartStore((s) => s.totalItems());
   const { user, isAuthenticated, logout } = useAuthStore();
@@ -107,15 +109,25 @@ export default function Navbar() {
             </nav>
 
             {/* Search Bar (Desktop) */}
-            <div className="hidden md:flex flex-1 max-w-md mx-6">
+            <form
+              className="hidden md:flex flex-1 max-w-md mx-6"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (searchQuery.trim()) {
+                  router.push(`/list-product?search=${encodeURIComponent(searchQuery.trim())}`);
+                }
+              }}
+            >
               <div className="relative w-full">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-9 bg-muted/50 border-border/50 focus:border-gold/50 focus:ring-gold/20"
                 />
               </div>
-            </div>
+            </form>
 
             {/* Right Actions */}
             <div className="flex items-center gap-1">
@@ -275,16 +287,27 @@ export default function Navbar() {
 
           {/* Mobile Search (Expandable) */}
           {searchOpen && (
-            <div className="md:hidden pb-3 animate-in slide-in-from-top-2">
+            <form
+              className="md:hidden pb-3 animate-in slide-in-from-top-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (searchQuery.trim()) {
+                  router.push(`/list-product?search=${encodeURIComponent(searchQuery.trim())}`);
+                  setSearchOpen(false);
+                }
+              }}
+            >
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-9 bg-muted/50 border-border/50"
                   autoFocus
                 />
               </div>
-            </div>
+            </form>
           )}
         </div>
       </header>

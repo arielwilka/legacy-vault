@@ -14,12 +14,12 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "Pokemon",
-    imageUrl: "https://picsum.photos/seed/greninja-ex/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Greninja-EX",
     images: [
-      "https://picsum.photos/seed/greninja-ex/800/800",
-      "https://picsum.photos/seed/greninja-ex-2/800/800",
-      "https://picsum.photos/seed/greninja-ex-3/800/800",
-      "https://picsum.photos/seed/greninja-ex-4/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-EX",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-EX-SVP",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Ash-Greninja",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-Base-305",
     ],
     stock: 10983,
     description:
@@ -37,11 +37,11 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "Pokemon",
-    imageUrl: "https://picsum.photos/seed/greninja-bp/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Greninja-40",
     images: [
-      "https://picsum.photos/seed/greninja-bp/800/800",
-      "https://picsum.photos/seed/greninja-bp-2/800/800",
-      "https://picsum.photos/seed/greninja-bp-3/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-40",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Ash-Greninja",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-Base-305",
     ],
     stock: 11000,
     description:
@@ -59,11 +59,11 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "Pokemon",
-    imageUrl: "https://picsum.photos/seed/greninja-gs/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Greninja-Gold-Star",
     images: [
-      "https://picsum.photos/seed/greninja-gs/800/800",
-      "https://picsum.photos/seed/greninja-gs-2/800/800",
-      "https://picsum.photos/seed/greninja-gs-3/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-Gold-Star",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-EX",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-40",
     ],
     stock: 10997,
     description:
@@ -81,11 +81,11 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "Pokemon",
-    imageUrl: "https://picsum.photos/seed/greninja-sf/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Greninja-EX-SVP",
     images: [
-      "https://picsum.photos/seed/greninja-sf/800/800",
-      "https://picsum.photos/seed/greninja-sf-2/800/800",
-      "https://picsum.photos/seed/greninja-sf-3/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-EX-SVP",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-Gold-Star",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Greninja-EX",
     ],
     stock: 10989,
     description:
@@ -103,11 +103,11 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "Pokemon",
-    imageUrl: "https://picsum.photos/seed/charizard-of/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Charizard-Obsidian-Flames",
     images: [
-      "https://picsum.photos/seed/charizard-of/800/800",
-      "https://picsum.photos/seed/charizard-of-2/800/800",
-      "https://picsum.photos/seed/charizard-of-3/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Charizard-Obsidian-Flames",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Charizard-VSTAR",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Charizard-Base",
     ],
     stock: 9500,
     description:
@@ -125,11 +125,11 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "Pokemon",
-    imageUrl: "https://picsum.photos/seed/pikachu-vv/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Pikachu-VMAX-tg17",
     images: [
-      "https://picsum.photos/seed/pikachu-vv/800/800",
-      "https://picsum.photos/seed/pikachu-vv-2/800/800",
-      "https://picsum.photos/seed/pikachu-vv-3/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Pikachu-VMAX-tg17",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Pikachu-EX-SAR",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Pikachu-Van-Gogh",
     ],
     stock: 8200,
     description:
@@ -147,10 +147,10 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "Pokemon",
-    imageUrl: "https://picsum.photos/seed/mewtwo-cz/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Mewtwo-VSTAR",
     images: [
-      "https://picsum.photos/seed/mewtwo-cz/800/800",
-      "https://picsum.photos/seed/mewtwo-cz-2/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Mewtwo-VSTAR",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Mewtwo-Mega-EX",
     ],
     stock: 7800,
     description:
@@ -168,11 +168,11 @@ export const products: Product[] = [
     price: 100000,
     category: "Extended Art Print",
     subCategory: "One Piece",
-    imageUrl: "https://picsum.photos/seed/luffy-g5/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Luffy-Gear-5-SP-Silver-OP05",
     images: [
-      "https://picsum.photos/seed/luffy-g5/800/800",
-      "https://picsum.photos/seed/luffy-g5-2/800/800",
-      "https://picsum.photos/seed/luffy-g5-3/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Luffy-Gear-5-SP-Silver-OP05",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Luffy-Gear-4-OP11",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Luffy-OP13",
     ],
     stock: 5000,
     description:
@@ -190,10 +190,10 @@ export const products: Product[] = [
     price: 200000,
     category: "Acrylic Display Case",
     subCategory: "Display",
-    imageUrl: "https://picsum.photos/seed/acrylic-bb/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Charizard-Paldean-Fates",
     images: [
-      "https://picsum.photos/seed/acrylic-bb/800/800",
-      "https://picsum.photos/seed/acrylic-bb-2/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Charizard-Paldean-Fates",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Charizard-Shiny-GX",
     ],
     stock: 150,
     description:
@@ -211,10 +211,10 @@ export const products: Product[] = [
     price: 250000,
     category: "Acrylic Display Case",
     subCategory: "Display",
-    imageUrl: "https://picsum.photos/seed/acrylic-etb/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Umbreon-EX",
     images: [
-      "https://picsum.photos/seed/acrylic-etb/800/800",
-      "https://picsum.photos/seed/acrylic-etb-2/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Umbreon-EX",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Umbreon-VMAX",
     ],
     stock: 80,
     description:
@@ -232,10 +232,10 @@ export const products: Product[] = [
     price: 150000,
     category: "Accessories",
     subCategory: "Magnetic Case",
-    imageUrl: "https://picsum.photos/seed/wg-black/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Eevee-SVP",
     images: [
-      "https://picsum.photos/seed/wg-black/800/800",
-      "https://picsum.photos/seed/wg-black-2/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Eevee-SVP",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Eevee-TWM",
     ],
     stock: 320,
     description:
@@ -253,10 +253,10 @@ export const products: Product[] = [
     price: 150000,
     category: "Accessories",
     subCategory: "Magnetic Case",
-    imageUrl: "https://picsum.photos/seed/wg-gold/400/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_400,h_400,c_fill,f_auto,q_auto/products/Espeon-EX",
     images: [
-      "https://picsum.photos/seed/wg-gold/800/800",
-      "https://picsum.photos/seed/wg-gold-2/800/800",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Espeon-EX",
+      "https://res.cloudinary.com/dohmgkugj/image/upload/f_auto,q_auto/products/Espeon-VMAX",
     ],
     stock: 250,
     description:
@@ -275,7 +275,7 @@ export const categories: CategoryDisplay[] = [
     id: "cat-001",
     name: "Extended Art Print (Slab)",
     description: "Custom hand-drawn extended art for graded cards",
-    imageUrl: "https://picsum.photos/seed/cat-ext-art/600/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_600,h_400,c_fill,f_auto,q_auto/products/Charizard-VSTAR",
     href: "/list-product?category=Extended+Art+Print",
     productCount: 8,
   },
@@ -283,7 +283,7 @@ export const categories: CategoryDisplay[] = [
     id: "cat-002",
     name: "Acrylic Display Case (Raw)",
     description: "Premium acrylic cases for booster boxes & ETBs",
-    imageUrl: "https://picsum.photos/seed/cat-acrylic/600/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_600,h_400,c_fill,f_auto,q_auto/products/Umbreon-VMAX",
     href: "/list-product?category=Acrylic+Display+Case",
     productCount: 2,
   },
@@ -291,7 +291,7 @@ export const categories: CategoryDisplay[] = [
     id: "cat-003",
     name: "Wonder Guard Accessories",
     description: "Magnetic cases & card protection accessories",
-    imageUrl: "https://picsum.photos/seed/cat-accessories/600/400",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_600,h_400,c_fill,f_auto,q_auto/products/Pikachu-Van-Gogh",
     href: "/list-product?category=Accessories",
     productCount: 2,
   },
@@ -303,7 +303,7 @@ export const featuredEvent: FeaturedEvent = {
   name: "Pokemon of The Month — Greninja",
   description:
     "Celebrate Greninja with our exclusive extended art collection! From BREAKpoint classics to the latest Twilight Masquerade releases.",
-  imageUrl: "https://picsum.photos/seed/event-greninja/1200/400",
+  imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_1200,h_400,c_fill,f_auto,q_auto/products/Greninja-EX",
   productIds: ["prod-001", "prod-002", "prod-003", "prod-004"],
 };
 
@@ -355,7 +355,7 @@ Mark your calendars and get ready for another wave of Mega Evolution hype next M
 - Japanese Counterpart: Ninja Spinner
 
 Stay tuned to Legacy Vault for extended art prints from this new set!`,
-    imageUrl: "https://picsum.photos/seed/chaos-rising-article/800/450",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_800,h_450,c_fill,f_auto,q_auto/products/Greninja-EX",
     publishedAt: "2026-03-28",
     isPublished: true,
   },
@@ -383,7 +383,7 @@ Store your collection in a climate-controlled environment. Avoid basements and a
 Always hold graded slabs by the edges. Use cotton gloves when handling raw cards.
 
 Visit our shop to find the perfect display solution for your collection!`,
-    imageUrl: "https://picsum.photos/seed/protect-cards/800/450",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_800,h_450,c_fill,f_auto,q_auto/products/Pikachu-EX-SAR",
     publishedAt: "2026-03-15",
     isPublished: true,
   },
@@ -412,7 +412,7 @@ Our Greninja collection spans multiple sets:
 Each design captures Greninja's ninja-like agility with dynamic water and shadow effects.
 
 Follow us on Instagram @legacyvault.id for more behind-the-scenes content!`,
-    imageUrl: "https://picsum.photos/seed/behind-art/800/450",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_800,h_450,c_fill,f_auto,q_auto/products/Ash-Greninja",
     publishedAt: "2026-02-20",
     isPublished: true,
   },
@@ -440,7 +440,7 @@ Cross-collectible appeal makes this One Piece card hugely popular.
 Crown Zenith's premium feel makes this Mewtwo a display piece.
 
 Protect your investment with Legacy Vault extended art prints and acrylic display cases!`,
-    imageUrl: "https://picsum.photos/seed/top5-cards/800/450",
+    imageUrl: "https://res.cloudinary.com/dohmgkugj/image/upload/w_800,h_450,c_fill,f_auto,q_auto/products/Charizard-Obsidian-Flames",
     publishedAt: "2026-01-10",
     isPublished: true,
   },

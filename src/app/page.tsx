@@ -146,7 +146,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-0">
             <div className="relative aspect-video md:aspect-auto">
               <Image
-                src="https://picsum.photos/seed/chaos-rising/800/500"
+                src="https://res.cloudinary.com/dohmgkugj/image/upload/w_800,h_500,c_fill,f_auto,q_auto/products/Greninja-EX"
                 alt="Chaos Rising Article"
                 fill
                 className="object-cover"
