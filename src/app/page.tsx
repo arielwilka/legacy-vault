@@ -1,65 +1,184 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+// ============================================================
+// Legacy Vault — Home Page
+// Hero, Categories, Pokemon of The Month, Featured Products
+// ============================================================
+
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Flame } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import HeroBanner from "@/components/shared/hero-banner";
+import CategoryCard from "@/components/shared/category-card";
+import ProductCard from "@/components/shared/product-card";
+import {
+  categories,
+  featuredEvent,
+  getFeaturedProducts,
+  getEventProducts,
+} from "@/data/mock-data";
+
+export default function HomePage() {
+  const featuredProducts = getFeaturedProducts();
+  const eventProducts = getEventProducts();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="space-y-16 md:space-y-24 pb-16">
+      {/* ===== Hero Banner ===== */}
+      <HeroBanner />
+
+      {/* ===== Category Section ===== */}
+      <section className="container mx-auto px-4">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Shop by <span className="text-gradient-gold">Category</span>
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Find the perfect display for your collection
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {categories.map((cat) => (
+            <CategoryCard key={cat.id} category={cat} />
+          ))}
+        </div>
+      </section>
+
+      {/* ===== Pokemon of The Month ===== */}
+      <section className="relative">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gold/5 via-transparent to-transparent" />
+
+        <div className="container mx-auto px-4 relative">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-gold/10">
+                <Flame className="h-5 w-5 text-gold" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold">
+                  {featuredEvent.name}
+                </h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {featuredEvent.description}
+                </p>
+              </div>
+            </div>
+            <Link href="/list-product">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-gold/30 text-gold hover:bg-gold/10 gap-1 hidden md:flex"
+              >
+                View All
+                <ArrowRight className="h-3 w-3" />
+              </Button>
+            </Link>
+          </div>
+
+          {/* Event Banner */}
+          <div className="relative rounded-xl overflow-hidden mb-8 aspect-[3/1] border border-gold/20">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src={featuredEvent.imageUrl}
+              alt={featuredEvent.name}
+              fill
+              className="object-cover"
+              sizes="100vw"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+            <div className="absolute inset-0 flex items-center p-8">
+              <div className="max-w-md">
+                <h3 className="text-3xl font-bold text-gradient-gold mb-2">
+                  Greninja
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Explore our curated collection of Greninja extended art prints
+                  — from classic BREAKpoint to the latest Twilight Masquerade.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Event Product Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {eventProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* ===== Featured Products ===== */}
+      <section className="container mx-auto px-4">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Featured <span className="text-gradient-gold">Products</span>
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Our most popular items, handpicked for you
+            </p>
+          </div>
+          <Link href="/list-product">
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-gold/30 text-gold hover:bg-gold/10 gap-1"
+            >
+              View All
+              <ArrowRight className="h-3 w-3" />
+            </Button>
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {featuredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
+
+      {/* ===== Article Preview ===== */}
+      <section className="container mx-auto px-4">
+        <div className="rounded-xl border border-border/50 overflow-hidden glass-card">
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="relative aspect-video md:aspect-auto">
+              <Image
+                src="https://picsum.photos/seed/chaos-rising/800/500"
+                alt="Chaos Rising Article"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="p-6 md:p-8 flex flex-col justify-center">
+              <span className="text-xs text-gold font-medium uppercase tracking-wider">
+                Latest News
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold mt-2">
+                Pokémon TCG &quot;Chaos Rising&quot; is Coming in May!
+              </h3>
+              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                The next Pokémon TCG Mega Evolution expansion, Chaos Rising, is
+                set to hit English markets on May 22, 2026. This set spotlights
+                Mega Greninja ex as a key card!
+              </p>
+              <div className="mt-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-gold/30 text-gold hover:bg-gold/10 gap-1"
+                >
+                  Read More
+                  <ArrowRight className="h-3 w-3" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
